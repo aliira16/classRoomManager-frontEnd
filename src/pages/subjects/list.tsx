@@ -42,6 +42,11 @@ const SubjectList = () => {
               <SelectTrigger>
                 <SelectValue placeholder="Filter by department" />
               </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">
+                  All Department
+                </SelectItem>
+              </SelectContent>
             </Select>
           </div>
         </div>
