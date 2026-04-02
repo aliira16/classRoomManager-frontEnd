@@ -15,7 +15,7 @@ import { dataProvider } from "./providers/data";
 import Dashboard from "./pages/dashboard";
 import { BookOpen, Home } from "lucide-react";
 import { Layout } from "./components/refine-ui/layout/layout";
-import SubjectList from "./pages/subjects/List"
+import SubjectList from "./pages/subjects/List";
 import SubjectsCreate from "./pages/subjects/create";
 
 function App() {
