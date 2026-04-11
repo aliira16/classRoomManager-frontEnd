@@ -1,4 +1,22 @@
-import { DataProvider } from "@refinedev/core";
-import { simpleRestDataProvider } from "@refinedev/simple-rest";
+// import  from "@refinedev/simple-rest";
+import { createDataProvider, CreateDataProviderOptions } from "@refinedev/rest";
+import { BACKEND_BASE_URL } from "@/constants";
+import { ListResponse } from "@/types";
+const options: CreateDataProviderOptions = {
+  getList: {
+    getEndpoint: ({ resource }) => resource,
+    mapResponse: async (response) => {
+      const payload: ListResponse = await response.json();
+      return payload.data ?? [];
+    },
 
-export const dataProvider: DataProvider = simpleRestDataProvider("http://localhost:8000/api");
+    getTotalCount: async (response) => {
+      const payload: ListResponse = await response.json();
+      return payload.pagination?.total ?? payload.data?.length ?? 0;
+    },
+  },
+};
+
+const dataProvider = createDataProvider(BACKEND_BASE_URL, options);
+
+export { dataProvider };
