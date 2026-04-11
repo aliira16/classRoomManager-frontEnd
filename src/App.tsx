@@ -13,13 +13,15 @@ import { useNotificationProvider } from "./components/refine-ui/notification/use
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
 import { dataProvider } from "./providers/data";
 import Dashboard from "./pages/Dashboard";
-import { BookOpen, Home } from "lucide-react";
+import { BookOpen, GraduationCap, Home } from "lucide-react";
 import { Layout } from "./components/refine-ui/layout/layout";
 import SubjectList from "./pages/subjects/list";
 import SubjectsCreate from "./pages/subjects/create";
+import ClassesList from "./pages/classes/list";
+import ClassesCreate from "./pages/classes/create";
 
 function App() {
-  return ( 
+  return (
     <BrowserRouter>
       <RefineKbarProvider>
         <ThemeProvider>
@@ -45,6 +47,12 @@ function App() {
                   create: "/subjects/create",
                   meta: { label: "Subjects", icon: <BookOpen /> },
                 },
+                {
+                  name: "classes",
+                  list: "/classes",
+                  create: "/classes/create",
+                  meta: { label: "Classes", icon: <GraduationCap /> },
+                },
               ]}
             >
               <Routes>
@@ -58,7 +66,11 @@ function App() {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="subjects">
                     <Route index element={<SubjectList />} />
-                    <Route path="/subjects" element={<SubjectsCreate />} />
+                    <Route path="/create" element={<SubjectsCreate />} />
+                  </Route>
+                  <Route path="classes">
+                    <Route index element={<ClassesList />} />
+                    <Route path="/create" element={<ClassesCreate />} />
                   </Route>
                 </Route>
               </Routes>

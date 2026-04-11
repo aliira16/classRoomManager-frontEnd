@@ -2,6 +2,9 @@ import { createDataProvider, CreateDataProviderOptions } from "@refinedev/rest";
 import { ListResponse } from "@/types";
 import { BACKEND_BASE_URL } from "@/constants";
 
+if (!BACKEND_BASE_URL)
+  throw new Error("BACKEND_BASE_URL is not config. set it in the env first");
+
 const options: CreateDataProviderOptions = {
   getList: {
     getEndpoint: ({ resource }) => resource,
@@ -25,7 +28,7 @@ const options: CreateDataProviderOptions = {
     },
 
     getTotalCount: async (response) => {
-      const payload: ListResponse = await response.json();
+      const payload: ListResponse = await response.clone().json();
       return payload.pagination?.total ?? payload.data?.length ?? 0;
     },
   },
@@ -33,4 +36,4 @@ const options: CreateDataProviderOptions = {
 
 const dataProvider = createDataProvider(BACKEND_BASE_URL, options);
 
-export { dataProvider };
+export {dataProvider};
