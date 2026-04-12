@@ -1,3 +1,5 @@
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/aliira16/classRoomManager-frontEnd?utm_source=oss&utm_medium=github&utm_campaign=aliira16%2FclassRoomManager-frontEnd&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
+
 # beige-knives-do
 
 <div align="center" style="margin: 30px;">
